@@ -9,7 +9,7 @@ import './Card.css';
 function Card({info}) {
     return (
         <div className="Card">
-            <img className="CardImage" src={require(`../pokemon/${info.id}.png`)} />
+            <img className="CardImage" alt={info.name.english} src={require(`../pokemon/${info.id}.png`)} />
             <Title name={info.name.english} />
             <Types types={info.type} />
             <Stat name="HP" value={info.base.HP} />
