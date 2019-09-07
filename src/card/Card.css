@@ -1,0 +1,18 @@
+.Card {
+    background: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px #AAA;
+    margin: 10px;
+    padding: 20px;
+    height: 400px;
+    width: 250px;
+}
+
+.CardImage {
+    border: 1px solid #000;
+    border-radius: 5px;
+    object-fit: scale-down;
+    height: 180px;
+    width: 220px;
+}
