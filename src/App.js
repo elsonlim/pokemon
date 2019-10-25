@@ -1,5 +1,4 @@
 import React from "react";
-import POKEMON from "./pokemon/pokemon";
 
 import Card from "./card/Card";
 import "./App.css";
@@ -15,13 +14,13 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(
-      "https://us-central1-pokedex-23fb6.cloudfunctions.net/app/pokemonData"
+      "https://us-central1-pokedex-23fb6.cloudfunctions.net/app/pokemonData",
     )
       .then(res => res.json())
       .then(resInJson =>
         this.setState(state => {
           return { pokemonData: resInJson };
-        })
+        }),
       );
   }
 
