@@ -46,7 +46,7 @@ jobs:
           command: "netlify deploy --prod --dir=build"
 workflows:
   version: 2
-  build-deploy:
+  build:
     jobs:
       - test
       - build_deploy:
