@@ -13,7 +13,6 @@ class PokemonGallery extends React.Component {
   }
 
   componentDidMount() {
-    console.log("here");
     fetch(
       "https://us-central1-pokedex-23fb6.cloudfunctions.net/app/pokemonData"
     )
@@ -24,29 +23,18 @@ class PokemonGallery extends React.Component {
   }
 
   render() {
-    const cards = this.props.pokemon
-      .filter((pokemon) => {
-        const searchText = this.props.searchText;
-        console.log(searchText);
-        if (!searchText || searchText.length === 0) {
-          return true;
-        }
-        return (
-          pokemon.name.english
-            .toLowerCase()
-            .indexOf(this.props.searchText.toLowerCase()) >= 0
-        );
-      })
-      .map((pokemon, index) => <Card key={index} info={pokemon} />);
+    const cards = this.props.pokemons.map((pokemon, index) => (
+      <Card key={index} info={pokemon} />
+    ));
 
     return <div className="AppContainer">{cards}</div>;
   }
 }
 
 const mapStateToProps = (state) => {
-  const { pokemon } = state.pokemonStore;
+  const { pokemonToShow: pokemons } = state.pokemonStore;
   const { searchText } = state.pokemonFilter;
-  return { pokemon, searchText };
+  return { pokemons, searchText };
 };
 
 const mapDispatchToProps = { updatePokemon };
