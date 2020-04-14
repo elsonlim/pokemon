@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { updatePokemon } from "../actions/index";
+import SearchBar from "./SearchBar";
 
 class PokemonGallery extends React.Component {
   constructor(props) {
@@ -24,14 +25,25 @@ class PokemonGallery extends React.Component {
   }
 
   render() {
-    const cards = this.props.pokemon.map((pokemon, index) => (
-      <Card key={index} info={pokemon} />
-    ));
+    const cards = this.props.pokemon
+      .filter((pokemon) => {
+        const searchText = this.props.searchText;
+        console.log(searchText);
+        if (!searchText || searchText.length === 0) {
+          return true;
+        }
+        return (
+          pokemon.name.english
+            .toLowerCase()
+            .indexOf(this.props.searchText.toLowerCase()) >= 0
+        );
+      })
+      .map((pokemon, index) => <Card key={index} info={pokemon} />);
 
     return (
       <div>
         <header className="AppHeader">
-          <h1>POKEMON</h1>
+          <SearchBar />
         </header>
         <div className="AppContainer">{cards}</div>
       </div>
@@ -41,7 +53,8 @@ class PokemonGallery extends React.Component {
 
 const mapStateToProps = (state) => {
   const { pokemon } = state.pokemonStore;
-  return { pokemon };
+  const { searchText } = state.pokemonFilter;
+  return { pokemon, searchText };
 };
 
 const mapDispatchToProps = { updatePokemon };
