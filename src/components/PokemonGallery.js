@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import { updatePokemon } from "../actions/index";
-import SearchBar from "./SearchBar";
 
 class PokemonGallery extends React.Component {
   constructor(props) {
@@ -40,14 +39,7 @@ class PokemonGallery extends React.Component {
       })
       .map((pokemon, index) => <Card key={index} info={pokemon} />);
 
-    return (
-      <div>
-        <header className="AppHeader">
-          <SearchBar />
-        </header>
-        <div className="AppContainer">{cards}</div>
-      </div>
-    );
+    return <div className="AppContainer">{cards}</div>;
   }
 }
 

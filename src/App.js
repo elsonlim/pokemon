@@ -2,13 +2,13 @@ import React from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
-import PokemonGallery from "./components/PokemonGallery";
+import SearchablePokemonGallery from "./containers/SearchablePokemonGallery";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <PokemonGallery />
+        <SearchablePokemonGallery />
       </div>
     </Provider>
   );

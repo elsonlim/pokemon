@@ -4,8 +4,9 @@ import { updateFilter } from "../actions";
 
 const SearchBar = ({ updateFilter }) => {
   const [searchText, setSearchText] = useState("");
+
   return (
-    <div>
+    <header className="AppHeader">
       <input
         type="text"
         value={searchText}
@@ -20,7 +21,7 @@ const SearchBar = ({ updateFilter }) => {
       >
         Filter
       </button>
-    </div>
+    </header>
   );
 };
 
