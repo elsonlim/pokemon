@@ -43,11 +43,15 @@ const SearchBar = ({ updateFilter, pokemon }) => {
   return (
     <header className="AppHeader">
       <input
+        className="filter-text"
         type="text"
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
       />
+
+      <div className="type-filer">{PokemonTypes}</div>
       <button
+        className="filter-button"
         onClick={() =>
           updateFilter({
             searchText,
@@ -55,9 +59,8 @@ const SearchBar = ({ updateFilter, pokemon }) => {
           })
         }
       >
-        Filter
+        Update Filter
       </button>
-      <div className="type-filer">{PokemonTypes}</div>
     </header>
   );
 };
